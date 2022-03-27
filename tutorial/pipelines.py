@@ -17,7 +17,8 @@ class TutorialPipeline:
         self.db = self.client['quotes']
 
     def process_item(self, item, spider):
-        table = self.db['quotes']
-        # table.insert_one(dict(item))
-        table.replace_one({"text": item['text']}, dict(item))
-        return item
+        if spider.name == "quotes":
+            table = self.db['quotes']
+            # table.insert_one(dict(item))
+            table.replace_one({"text": item['text']}, dict(item))
+            return item
