@@ -22,3 +22,4 @@ class TutorialPipeline:
             # table.insert_one(dict(item))
             table.replace_one({"text": item['text']}, dict(item))
             return item
+        return item

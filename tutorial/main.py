@@ -9,4 +9,6 @@ from scrapy.cmdline import execute
 # 注意execute的参数类型为一个列表
 # execute("scrapy crawl quotes".split())
 
-execute("scrapy crawl qidian".split())
+# execute("scrapy crawl qidian".split())
+execute("scrapy crawl baidu_hot".split())
+# execute("scrapy crawl hixin".split())
