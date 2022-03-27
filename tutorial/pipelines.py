@@ -7,6 +7,7 @@
 # useful for handling different item types with a single interface
 from itemadapter import ItemAdapter
 from pymongo import MongoClient
+from scrapy.pipelines.images import ImagesPipeline
 
 
 class TutorialPipeline:
@@ -23,3 +24,14 @@ class TutorialPipeline:
             table.replace_one({"text": item['text']}, dict(item))
             return item
         return item
+
+
+class ImagePipeline(ImagesPipeline):
+    def get_media_requests(self, item, info):
+        return super().get_media_requests(item, info)
+
+    def file_path(self, request, response=None, info=None, *, item=None):
+        print(item)
+        # 自定义文件名
+        filename = "zol/%s.jpg" % item['image_name']
+        return filename
